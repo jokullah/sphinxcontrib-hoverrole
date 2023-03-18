@@ -1,0 +1,7 @@
+Metadata-Version: 2.1
+Name: hoverroleextension
+Version: 1.11
+Summary: Sphinx mouse-over translation extension
+Author: Simon Bodvarsson
+Author-email: simonb92@gmail.com
+License-File: LICENSE
