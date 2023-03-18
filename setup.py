@@ -9,13 +9,15 @@ requires = ["Sphinx>=0.6", "setuptools"]
 
 
 setup(
-    name="hoverroleextension",
-    version="1.11",
+    name="sphinxcontrib-hoverrole",
+    version="2.0",
     description="Sphinx mouse-over translation extension",
     author="Simon Bodvarsson",
     author_email="simonb92@gmail.com",
+    maintainer="Benedikt Magnusson",
+    maintainer_email="bsm@hi.is",
     packages=find_packages(),
     include_package_data=True,
     install_requires=requires,
-    namespace_packages=["hoverrole"],
+    namespace_packages=["sphinxcontrib"],
 )
