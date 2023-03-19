@@ -5,7 +5,7 @@ This package contains a Sphinx extension to embed mouse-over translations of mat
 Icelandic to English (or vice versa). It defines a role :hover:
 """
 
-requires = ["Sphinx>=0.6", "setuptools"]
+requires = ["Sphinx>=0.6", "setuptools","coloredlogs>=15.0"]
 
 
 setup(
