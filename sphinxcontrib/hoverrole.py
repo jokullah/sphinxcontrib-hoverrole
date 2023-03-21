@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 # The role :hover:`word,term` provides an inline highlight of 'word' with a mouse-over
 # translation from Icelandic to English of 'term' according to the stae.is/os database.
 # In the case of :hover:`word`. The string 'term' is assumed to be the same as 'word'
