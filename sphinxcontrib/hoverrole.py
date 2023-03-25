@@ -16,8 +16,11 @@ from docutils import nodes
 from docutils.parsers.rst import Directive
 from jinja2 import Template
 
-from . import dictlookup
-from .utils import (
+#from . import dictlookup
+import sphinxcontrib.dictlookup
+
+#from .utils import (
+from sphinxcontrib.utils import (
     configure_logger,
     get_html,
     get_latex,

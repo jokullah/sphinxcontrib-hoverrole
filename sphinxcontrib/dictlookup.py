@@ -3,7 +3,7 @@ import logging
 import sys
 from pathlib import Path
 
-from .utils import configure_logger
+from sphinxcontrib.utils import configure_logger
 
 logger = configure_logger(__name__)
 # Look up icelandic searchterm 'word' in the dictionaries 'minstae' and 'binstae'
