@@ -1,0 +1,14 @@
+LICENSE
+README.md
+setup.py
+sphinxcontrib/__init__.py
+sphinxcontrib/createDicts.py
+sphinxcontrib/dictlookup.py
+sphinxcontrib/hoverrole.py
+sphinxcontrib/utils.py
+sphinxcontrib_hoverrole.egg-info/PKG-INFO
+sphinxcontrib_hoverrole.egg-info/SOURCES.txt
+sphinxcontrib_hoverrole.egg-info/dependency_links.txt
+sphinxcontrib_hoverrole.egg-info/namespace_packages.txt
+sphinxcontrib_hoverrole.egg-info/requires.txt
+sphinxcontrib_hoverrole.egg-info/top_level.txt
