@@ -10,7 +10,7 @@ requires = ["Sphinx>=0.6", "setuptools", "coloredlogs>=15.0"]
 
 setup(
     name="sphinxcontrib-hoverrole",
-    version="2.0.5",
+    version="2.0.6",
     description="Sphinx mouse-over translation extension",
     author="Simon Bodvarsson",
     author_email="simonb92@gmail.com",
