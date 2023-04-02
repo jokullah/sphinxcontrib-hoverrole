@@ -1,11 +1,11 @@
 LICENSE
 README.md
 setup.py
-sphinxcontrib/__init__.py
-sphinxcontrib/createDicts.py
-sphinxcontrib/dictlookup.py
-sphinxcontrib/hoverrole.py
-sphinxcontrib/utils.py
+sphinxcontrib/hoverrole/__init__.py
+sphinxcontrib/hoverrole/createDicts.py
+sphinxcontrib/hoverrole/dictlookup.py
+sphinxcontrib/hoverrole/hoverrole.py
+sphinxcontrib/hoverrole/utils.py
 sphinxcontrib_hoverrole.egg-info/PKG-INFO
 sphinxcontrib_hoverrole.egg-info/SOURCES.txt
 sphinxcontrib_hoverrole.egg-info/dependency_links.txt
