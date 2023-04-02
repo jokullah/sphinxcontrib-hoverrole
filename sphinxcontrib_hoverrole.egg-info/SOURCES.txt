@@ -6,6 +6,10 @@ sphinxcontrib/hoverrole/createDicts.py
 sphinxcontrib/hoverrole/dictlookup.py
 sphinxcontrib/hoverrole/hoverrole.py
 sphinxcontrib/hoverrole/utils.py
+sphinxcontrib/hoverrole/templates/not_found.html
+sphinxcontrib/hoverrole/templates/translation.html
+sphinxcontrib/hoverrole/data/binstae.json
+sphinxcontrib/hoverrole/data/minstae.json
 sphinxcontrib_hoverrole.egg-info/PKG-INFO
 sphinxcontrib_hoverrole.egg-info/SOURCES.txt
 sphinxcontrib_hoverrole.egg-info/dependency_links.txt
