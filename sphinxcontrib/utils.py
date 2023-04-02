@@ -15,7 +15,7 @@ from jinja2 import (
 
 SEARCH_URL = "https://www.stae.is/os/leita/{}"
 
-jinja2_env = Environment(loader=PackageLoader("sphinxcontrib"), autoescape=select_autoescape())
+jinja2_env = Environment(loader=PackageLoader("sphinxcontrib.hoverrole","templates"), autoescape=select_autoescape())
 
 
 def configure_logger(name):
