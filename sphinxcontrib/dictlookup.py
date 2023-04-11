@@ -8,11 +8,11 @@ from sphinxcontrib.utils import configure_logger
 logger = configure_logger(__name__)
 # Look up icelandic searchterm 'word' in the dictionaries 'minstae' and 'binstae'
 # and return a dict containing the english and icelandic citation forms of the word.
-base_dir = Path(__file__).parent.resolve().parent.parent.parent
-data_file = base_dir / "python3.10/site-packages/sphinxcontrib/hoverrole/data" / "minstae.json"
+base_dir = Path(__file__).parent.resolve()
+data_file = base_dir / "hoverrole/data" / "minstae.json"
 minstae_data = json.loads(data_file.read_text())
 
-data_file = base_dir / "python3.10/site-packages/sphinxcontrib/hoverrole/data" / "binstae.json"
+data_file = base_dir / "hoverrole/data" / "binstae.json"
 binstae_data = json.loads(data_file.read_text())
 
 
