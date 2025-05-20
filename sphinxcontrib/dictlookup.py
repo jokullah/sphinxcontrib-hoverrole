@@ -20,6 +20,7 @@ def lookup(word):
     word = word.lower()
     # If 'word' is in citation form, look up in 'minstae' returns the translation.
     try:
+        # test test
         entry = minstae_data[word]
         entry["isTerm"] = word
         return entry
