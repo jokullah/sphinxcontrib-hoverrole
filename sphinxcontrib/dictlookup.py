@@ -17,6 +17,7 @@ binstae_data = json.loads(data_file.read_text())
 
 
 def lookup(word):
+    print("test")
     word = word.lower()
     # If 'word' is in citation form, look up in 'minstae' returns the translation.
     try:
