@@ -17,12 +17,12 @@ binstae_data = json.loads(data_file.read_text())
 
 
 def lookup(word):
-    print("test")
     word = word.lower()
     # If 'word' is in citation form, look up in 'minstae' returns the translation.
     try:
         # test test
         entry = minstae_data[word]
+        entry["enTerm"] = 'test'
         entry["isTerm"] = word
         return entry
     # If 'word' is not found in 'minstae', it may not be in citation form and a
