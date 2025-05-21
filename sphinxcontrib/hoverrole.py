@@ -62,23 +62,19 @@ def hover_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
 
     # for text input of the form: "word,term"
     split_text = text.split(",")
+    split_text = [part.lstrip() for part in split_text]
     stae_index = None
     if len(split_text) == 4:
         word, term, ordabok, stae_index = split_text
         stae_index = int(stae_index) - 1  # indexum frá 1 en ekki 0
-        term = term.lstrip()
-        ordabok = ordabok.lstrip()
     elif len(split_text) == 3:
         word, term, variable = split_text
-        if variable in [str(n) for n in range(0,100)]:
+        if variable.isdigit():
             stae_index = int(variable) - 1  # indexum frá 1 en ekki 0
         else:
             ordabok = variable
-            ordabok = ordabok.lstrip()
-        term = term.lstrip()
     elif len(split_text) == 2:
         word, term = split_text
-        term = term.lstrip()
     else:
         word = term = text
 
