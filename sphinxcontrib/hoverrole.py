@@ -121,17 +121,17 @@ def make_hover_node(word, term, transNum, htmlLink, latexLink, latexIt, stae_ind
 
     # If translation was not found create error message and code snippets.
     except KeyError:
-        hover_node["htmlcode"] = get_html("not_found.html", word, term,)
+        hover_node["htmlcode"] = get_html("not_found.html", word, term, 'EDLISFR')
         hover_node["latexcode"] = get_latex(latexIt, latexLink, word, term)
         return hover_node
 
     if stae_index == None:
         hover_node["translation"] = serialize(translation)
-        hover_node["htmlcode"] = get_html("translation.html", word, translation, htmlLink)
+        hover_node["htmlcode"] = get_html("translation.html", word, translation, 'EDLISFR', htmlLink)
     else:
         hover_node["translation"] = translation[stae_index]
         hover_node["htmlcode"] = get_html(
-            "translation.html", word, translation, htmlLink, stae_index
+            "translation.html", word, translation, 'EDLISFR', htmlLink, stae_index
         )
     hover_node["latexcode"] = get_latex(latexIt, latexLink, word, translation)
 
