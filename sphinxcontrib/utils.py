@@ -36,13 +36,11 @@ def serialize(items: list) -> str:
 
 
 def get_html(
-    tpl: str, word: str, terms: list, ordabok: str, html_link: bool = False, stae_index: bool = None
+    tpl: str, word: str, term: str, terms: list, ordabok: str, html_link: bool = False, stae_index: bool = None
 ) -> str:
     if stae_index == None:
-        term: str = serialize(terms)
         url: Optional[str] = SEARCH_URL.format(term, ordabok) if html_link else None
     else:
-        term: str = terms[stae_index]
         url: Optional[str] = SEARCH_URL.format(term, ordabok) if html_link else None
     template = jinja2_env.get_template(tpl)
     return template.render(word=word, term=term, url=url)
