@@ -1,6 +1,6 @@
 <a class="tooltip" {% if url %} href="{{url}}" {% endif %} target="_blank">
   {{word}}
-    <span>en: <i>{{term}}</i>
+    <span>en: <i>{{ term | join(', ') }}</i>
     {% if url %}
       <staelink style="font-size:80%;"><br><strong>Smelltu</strong> fyrir ítarlegri þýðingu.</staelink>
     {% endif %}
