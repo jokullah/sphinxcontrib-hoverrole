@@ -38,12 +38,12 @@ def serialize(items: list) -> str:
 def get_html(
     tpl: str, word: str, term: str, terms: list, ordabok: str, html_link: bool = False, stae_index: bool = None
 ) -> str:
-    if stae_index == None:
-        url: Optional[str] = SEARCH_URL.format(term, ordabok) if html_link else None
-    else:
-        url: Optional[str] = SEARCH_URL.format(term, ordabok) if html_link else None
+    url: Optional[str] = SEARCH_URL.format(term, ordabok) if html_link else None
     template = jinja2_env.get_template(tpl)
-    return template.render(word=word, term=terms, url=url)
+    if stae_index == None:
+        return template.render(word=word, term=terms, url=url)
+    else:
+        return template.render(word=word, term=terms[stae_index], url=url)
 
 
 def get_latex(latexIt: bool, latexLink: bool, word: str, term: str) -> str:
