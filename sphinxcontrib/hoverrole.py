@@ -67,6 +67,7 @@ def hover_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
         word, term, ordabok, stae_index = split_text
         stae_index = int(stae_index) - 1  # indexum frá 1 en ekki 0
         term = term.lstrip()
+        ordabok = ordabok.lstrip()
     elif len(split_text) == 3:
         word, term, variable = split_text
         if variable.isdigit():
@@ -74,6 +75,7 @@ def hover_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
             term = term.lstrip()
         else:
             ordabok = variable
+            ordabok = ordabok.lstrip()
     elif len(split_text) == 2:
         word, term = split_text
         term = term.lstrip()
