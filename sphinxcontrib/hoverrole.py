@@ -49,7 +49,7 @@ class HoverListDirective(Directive):
         return [hoverlist("")]
 
 
-def hover_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
+def hover_role(name, rawtext, text, lineno, inliner, options={}, content=[], ordasafn = None):
     # app lets us access configuration settings and the parser as well as save
     # data for later use.
     app = inliner.document.settings.env.app
@@ -58,6 +58,10 @@ def hover_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
     latexLink = app.config.hover_latexLinkToStae
     latexIt = app.config.hover_latexItText
     translationList = app.config.hover_translationList
+    ordabok = app.config.hover_ordabok
+
+    if ordasafn:
+        ordabok = ordasafn
 
     # for text input of the form: "word,term"
     split_text = text.split(",")
@@ -72,7 +76,7 @@ def hover_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
     else:
         word = term = text
 
-    node = make_hover_node(word, term, transNum, htmlLink, latexLink, latexIt, stae_index)
+    node = make_hover_node(word, term, transNum, htmlLink, latexLink, latexIt, stae_index, ordabok)
     # Save the translated term to file for later use in hoverlist.
     if translationList:
         save_to_listfile(get_translations_file(), node)
@@ -106,7 +110,7 @@ def save_to_listfile(filename: str, node: hover):
     return
 
 
-def make_hover_node(word, term, transNum, htmlLink, latexLink, latexIt, stae_index):
+def make_hover_node(word, term, transNum, htmlLink, latexLink, latexIt, stae_index, ordabok):
     # Create new hover object.
     hover_node = hover()
     hover_node["word"] = word
@@ -121,17 +125,17 @@ def make_hover_node(word, term, transNum, htmlLink, latexLink, latexIt, stae_ind
 
     # If translation was not found create error message and code snippets.
     except KeyError:
-        hover_node["htmlcode"] = get_html("not_found.html", word, term, 'EDLISFR')
+        hover_node["htmlcode"] = get_html("not_found.html", word, term, ordabok)
         hover_node["latexcode"] = get_latex(latexIt, latexLink, word, term)
         return hover_node
 
     if stae_index == None:
         hover_node["translation"] = serialize(translation)
-        hover_node["htmlcode"] = get_html("translation.html", word, translation, 'EDLISFR', htmlLink)
+        hover_node["htmlcode"] = get_html("translation.html", word, translation, ordabok, htmlLink)
     else:
         hover_node["translation"] = translation[stae_index]
         hover_node["htmlcode"] = get_html(
-            "translation.html", word, translation, 'EDLISFR', htmlLink, stae_index
+            "translation.html", word, translation, ordabok, htmlLink, stae_index
         )
     hover_node["latexcode"] = get_latex(latexIt, latexLink, word, translation)
 
@@ -232,6 +236,7 @@ def setup(app):
     app.add_config_value("hover_latexLinkToStae", 0, "env")
     # Should the text e italicized in latex output. '1' for on, '0' for off.
     app.add_config_value("hover_latexItText", 1, "env")
+    app.add_config_value("hover_ordabok", "EDLISFR")
 
     # Should a list of translations e created (default '1')
     app.add_config_value("hover_translationList", 1, "env")
