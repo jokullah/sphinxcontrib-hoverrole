@@ -40,10 +40,7 @@ def get_html(
 ) -> str:
     url: Optional[str] = SEARCH_URL.format(term, ordabok) if html_link else None
     template = jinja2_env.get_template(tpl)
-    if stae_index == None:
-        return template.render(word=word, term=terms, url=url)
-    else:
-        return template.render(word=word, term=terms[stae_index], url=url)
+    return template.render(word=word, term=terms, url=url)
 
 
 def get_latex(latexIt: bool, latexLink: bool, word: str, term: str) -> str:
