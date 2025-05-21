@@ -40,7 +40,7 @@ def get_html(
 ) -> str:
     if stae_index == None:
         term: str = serialize(terms)
-        url: Optional[str] = SEARCH_URL.format(word, ordabok) if html_link else None
+        url: Optional[str] = SEARCH_URL.format(term, ordabok) if html_link else None
     else:
         term: str = terms[stae_index]
         url: Optional[str] = SEARCH_URL.format(term, ordabok) if html_link else None
