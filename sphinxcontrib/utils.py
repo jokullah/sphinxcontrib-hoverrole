@@ -45,11 +45,11 @@ def get_html(
 
 def get_latex(latexIt: bool, latexLink: bool, word: str, term: str) -> str:
     if latexIt:
-        return f"\\textit{{{word}}}"
+        return f"\\textit{{{term}}}"
     if latexLink:
-        url = SEARCH_URL.format(word, ordabok)
-        return f"\\href{{{url}}}{{{word}}}"
-    return word
+        url = SEARCH_URL.format(term, ordabok)
+        return f"\\href{{{url}}}{{{term}}}"
+    return term
 
 
 def get_translations_file():
