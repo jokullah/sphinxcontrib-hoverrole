@@ -54,7 +54,7 @@ def get_html(
         url: Optional[str] = urlify(terms, ordabok) if html_link else None
     else:
         term: str = terms[stae_index]
-        url: Optional[str] = SEARCH_URL.format(term) if html_link else None
+        url: Optional[str] = SEARCH_URL.format(term, ordabok) if html_link else None
     template = jinja2_env.get_template(tpl)
     return template.render(word=word, term=term, url=url)
 
