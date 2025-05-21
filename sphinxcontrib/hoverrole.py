@@ -123,7 +123,7 @@ def make_hover_node(word, term, transNum, htmlLink, latexLink, latexIt, stae_ind
     try:
         translation = dictentry["enTerm"]
         if stae_index:
-            translation = list(translation[stae_index])
+            translation = [translation[stae_index]]
         hover_node["translation"] = translation
         hover_node["citationform"] = dictentry["isTerm"]
 
