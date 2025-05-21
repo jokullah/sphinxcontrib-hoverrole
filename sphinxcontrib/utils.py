@@ -13,7 +13,7 @@ from jinja2 import (
     select_autoescape,
 )
 
-SEARCH_URL = "https://www.stae.is/os/leita/{}"
+SEARCH_URL = "https://idord.arnastofnun.is/leit/{}/ordabok/{}"
 
 jinja2_env = Environment(loader=PackageLoader("sphinxcontrib.hoverrole","hoverrole/templates"), autoescape=select_autoescape())
 
@@ -41,17 +41,17 @@ def serialize(items: list) -> str:
     return items
 
 
-def urlify(item: str, split_char: str = "_") -> str:
-    term = get_first_term(item).replace(" ", split_char)
-    return SEARCH_URL.format(term)
+def urlify(item: str, ordabok: str, split_char: str = "_") -> str:
+    first_term = get_first_term(item).replace(" ", split_char)
+    return SEARCH_URL.format(first_term, ordabok)
 
 
 def get_html(
-    tpl: str, word: str, terms: list, html_link: bool = False, stae_index: bool = None
+    tpl: str, word: str, terms: list, ordabok: str, html_link: bool = False, stae_index: bool = None
 ) -> str:
     if stae_index == None:
         term: str = serialize(terms)
-        url: Optional[str] = urlify(terms) if html_link else None
+        url: Optional[str] = urlify(terms, ordabok) if html_link else None
     else:
         term: str = terms[stae_index]
         url: Optional[str] = SEARCH_URL.format(term) if html_link else None
@@ -63,7 +63,7 @@ def get_latex(latexIt: bool, latexLink: bool, word: str, term: str) -> str:
     if latexIt:
         return f"\\textit{{{word}}}"
     if latexLink:
-        url = urlify(term, "\_")
+        url = urlify(term, ordabok, "\_")
         return f"\\href{{{url}}}{{{word}}}"
     return word
 
