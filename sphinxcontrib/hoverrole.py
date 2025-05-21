@@ -122,6 +122,8 @@ def make_hover_node(word, term, transNum, htmlLink, latexLink, latexIt, stae_ind
     dictentry = dictlookup.lookup(term, ordabok)
     try:
         translation = dictentry["enTerm"]
+        if stae_index:
+            translation = translation[stae_index]
         hover_node["translation"] = translation
         hover_node["citationform"] = dictentry["isTerm"]
 
