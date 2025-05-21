@@ -240,7 +240,7 @@ def setup(app):
     app.add_config_value("hover_latexLinkToStae", 0, "env")
     # Should the text e italicized in latex output. '1' for on, '0' for off.
     app.add_config_value("hover_latexItText", 1, "env")
-    app.add_config_value("hover_ordabok", "EDLISFR")
+    app.add_config_value("hover_ordabok", "EDLISFR", '')
 
     # Should a list of translations e created (default '1')
     app.add_config_value("hover_translationList", 1, "env")
