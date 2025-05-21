@@ -72,10 +72,10 @@ def hover_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
         word, term, variable = split_text
         if variable in [str(n) for n in range(0,100)]:
             stae_index = int(variable) - 1  # indexum frá 1 en ekki 0
-            term = term.lstrip()
         else:
             ordabok = variable
             ordabok = ordabok.lstrip()
+        term = term.lstrip()
     elif len(split_text) == 2:
         word, term = split_text
         term = term.lstrip()
