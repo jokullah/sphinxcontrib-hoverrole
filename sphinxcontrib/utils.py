@@ -29,21 +29,10 @@ def configure_logger(name):
     return logger
 
 
-def get_first_term(terms: Union[list, str]) -> str:
-    if terms and isinstance(terms, list):
-        return terms[0]
-    return terms
-
-
 def serialize(items: list) -> str:
     if items and isinstance(items, list):
         return ", ".join(items)
     return items
-
-
-def urlify(item: str, ordabok: str, split_char: str = "_") -> str:
-    first_term = get_first_term(item).replace(" ", split_char)
-    return SEARCH_URL.format(first_term, ordabok)
 
 
 def get_html(
@@ -51,7 +40,7 @@ def get_html(
 ) -> str:
     if stae_index == None:
         term: str = serialize(terms)
-        url: Optional[str] = urlify(terms, ordabok) if html_link else None
+        url: Optional[str] = SEARCH_URL.format(word, ordabok) if html_link else None
     else:
         term: str = terms[stae_index]
         url: Optional[str] = SEARCH_URL.format(term, ordabok) if html_link else None
@@ -63,7 +52,7 @@ def get_latex(latexIt: bool, latexLink: bool, word: str, term: str) -> str:
     if latexIt:
         return f"\\textit{{{word}}}"
     if latexLink:
-        url = urlify(term, ordabok, "\_")
+        url = SEARCH_URL.format(word, ordabok)
         return f"\\href{{{url}}}{{{word}}}"
     return word
 
