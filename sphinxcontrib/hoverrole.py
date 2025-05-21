@@ -128,7 +128,7 @@ def make_hover_node(word, term, transNum, htmlLink, latexLink, latexIt, stae_ind
         hover_node["citationform"] = dictentry["isTerm"]
 
     # If translation was not found create error message and code snippets.
-    except KeyError:
+    except KeyError, IndexError:
         hover_node["htmlcode"] = get_html("not_found.html", word, term, ordabok)
         hover_node["latexcode"] = get_latex(latexIt, latexLink, word, term)
         return hover_node
