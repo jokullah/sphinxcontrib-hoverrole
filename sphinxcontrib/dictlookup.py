@@ -9,7 +9,7 @@ from sphinxcontrib.utils import configure_logger
 logger = configure_logger(__name__)
 
 
-def lookup(word):
+def lookup(word, ordabok):
     word = word.lower()
     # look up in word in idord, returns the translation.
     try:
@@ -20,9 +20,10 @@ def lookup(word):
         english_words = []
 
         for key in data.get("results", []):
-            for word_info in key.get("words", []):
-                if word_info.get("fklanguage") == "EN":
-                    english_words.append(word_info.get("word"))
+            if ordabok == None or key.get("fkdictionary") == ordabok:
+                for word_info in key.get("words", []):
+                    if word_info.get("fklanguage") == "EN":
+                        english_words.append(word_info.get("word"))
 
         
         entry = {}
