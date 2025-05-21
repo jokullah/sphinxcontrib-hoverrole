@@ -49,7 +49,7 @@ class HoverListDirective(Directive):
         return [hoverlist("")]
 
 
-def hover_role(name, rawtext, text, lineno, inliner, options={}, content=[], ordasafn = None):
+def hover_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
     # app lets us access configuration settings and the parser as well as save
     # data for later use.
     app = inliner.document.settings.env.app
@@ -60,16 +60,20 @@ def hover_role(name, rawtext, text, lineno, inliner, options={}, content=[], ord
     translationList = app.config.hover_translationList
     ordabok = app.config.hover_ordabok
 
-    if ordasafn:
-        ordabok = ordasafn
-
     # for text input of the form: "word,term"
     split_text = text.split(",")
     stae_index = None
-    if len(split_text) == 3:
-        word, term, stae_index = split_text
+    if len(split_text) == 4:
+        word, term, ordabok, stae_index = split_text
         stae_index = int(stae_index) - 1  # indexum frá 1 en ekki 0
         term = term.lstrip()
+    elif len(split_text) == 3:
+        word, term, variable = split_text
+        if variable.isdigit():
+            stae_index = int(variable) - 1  # indexum frá 1 en ekki 0
+            term = term.lstrip()
+        else:
+            ordabok = variable
     elif len(split_text) == 2:
         word, term = split_text
         term = term.lstrip()
