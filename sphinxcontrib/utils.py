@@ -43,7 +43,7 @@ def get_html(
     else:
         url: Optional[str] = SEARCH_URL.format(term, ordabok) if html_link else None
     template = jinja2_env.get_template(tpl)
-    return template.render(word=word, term=term, url=url)
+    return template.render(word=word, term=terms, url=url)
 
 
 def get_latex(latexIt: bool, latexLink: bool, word: str, term: str) -> str:
