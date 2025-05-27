@@ -122,8 +122,14 @@ def make_hover_node(word, term, transNum, htmlLink, latexLink, latexIt, stae_ind
     dictentry = dictlookup.lookup(term, ordabok)
     try:
         translation = dictentry["enTerm"]
-        if stae_index:
-            translation = [translation[stae_index]]
+        try:
+            if stae_index is not None:
+                translation = [translation[stae_index]]
+        except IndexError:
+            logger.warning(
+                "stae_index %s out of range for term '%s' (has %d translations)",
+                stae_index + 1, term, len(translation)
+            )
         hover_node["translation"] = translation
         hover_node["citationform"] = dictentry["isTerm"]
 
@@ -133,7 +139,7 @@ def make_hover_node(word, term, transNum, htmlLink, latexLink, latexIt, stae_ind
         hover_node["latexcode"] = get_latex(latexIt, latexLink, word, term)
         return hover_node
 
-    if stae_index == None:
+    if stae_index is None:
         hover_node["translation"] = serialize(translation)
         hover_node["htmlcode"] = get_html("translation.html", word, term, translation, ordabok, htmlLink)
     else:
