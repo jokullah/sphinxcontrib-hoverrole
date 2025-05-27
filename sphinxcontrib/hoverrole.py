@@ -183,6 +183,8 @@ def create_hoverlist(app, doctree, fromdocname):
     # Add words and translations (sorted) to nodes.
     for key, value in sorted(words.items()):
         wordnode = nodes.emphasis(key, key)
+        if isinstance(value, list):
+            value = ", ".join(value)
         translationstring = " : " + value
 
         # Add linebreak if smaller version of list is used.
