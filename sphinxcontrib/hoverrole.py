@@ -179,7 +179,7 @@ def create_hoverlist(app, doctree, fromdocname):
     # Words is a dictionary with translated terms as keys and translations as values.
     words = {}
     content = []
-    data: List[HoverType] = json.loads(Path(get_translations_file()).read_text())
+    data: List[HoverType] = json.loads(Path(get_translations_file()).read_text(encoding='utf-8'))
 
     for item in data:
         if item["citationform"] in words:
